@@ -1,11 +1,11 @@
 import React from "react";
 import { createBrowserRouter } from "react-router-dom";
-import App from "../App";
+import MainLayout from "../Layouts/MainLayout";
 // import App from "../App";
 const routes = createBrowserRouter([
   {
     path: "/",
-    element: <App></App>,
+    element: <MainLayout></MainLayout>,
   },
 ]);
 
