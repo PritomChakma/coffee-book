@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 const Card = ({ coffee }) => {
   const {
     name,
@@ -11,7 +12,7 @@ const Card = ({ coffee }) => {
     popularity,
   } = coffee || {};
   return (
-    <div>
+    <Link to={`/coffee/${id}`}>
       <div className="card card-compact bg-base-100  shadow-xl my-12">
         <figure className="h-48 w-full">
           <img src={image} alt="coffee" />
@@ -43,7 +44,7 @@ const Card = ({ coffee }) => {
           </p>
         </div>
       </div>
-    </div>
+    </Link>
   );
 };
 

@@ -16,13 +16,13 @@ const Coffee = () => {
   };
   return (
     <>
-      <div className="flex justify-between items-center">
+      <div className="md:flex justify-between items-center">
         <div>
           <h1 className="text-2xl font-bolde">
             Sort Coffee's by Popularity & Rating
           </h1>
         </div>
-        <div className="flex gap-3">
+        <div className="flex gap-3 mt-10 md:mt-0">
           <button
             onClick={() => handleSort("popularity")}
             className="btn btn-warning font-bold"
