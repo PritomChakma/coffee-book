@@ -1,3 +1,4 @@
+import toast from "react-hot-toast";
 // get all coffee from local storage
 const getFavourite = () => {
   const all = localStorage.getItem("favourites");
@@ -16,10 +17,11 @@ const addFavourite = (coffee) => {
   const favourites = getFavourite();
   const isExist = favourites.find((item) => item.id == coffee.id);
   if (isExist) {
-    return alert("already exist this");
+    return toast.error("Coffee Already Exist!");
   }
   console.log(favourites);
   favourites.push(coffee);
   localStorage.setItem("favourites", JSON.stringify(favourites));
+  toast.success("Successfully Added");
 };
 export { addFavourite, getFavourite };

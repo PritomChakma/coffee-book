@@ -1,13 +1,20 @@
 import { useEffect, useState } from "react";
 import { useLoaderData, useParams } from "react-router-dom";
 import { addFavourite, getFavourite } from "../utility";
+
 const CoffeeDetails = () => {
   const [coffee, setCoffee] = useState({});
+  const [isFavourit, setIsFAvourite] = useState(false);
   const data = useLoaderData();
   const { id } = useParams();
   useEffect(() => {
     const singleData = data.find((coffee) => coffee.id == id);
     setCoffee(singleData);
+    const favourit = getFavourite();
+    const isExist = favourit.find((item) => item.id == singleData.id);
+    if (isExist) {
+      setIsFAvourite(true);
+    }
   }, []);
   const {
     name,
@@ -24,7 +31,7 @@ const CoffeeDetails = () => {
   // HandleFavourite  button CLick
   const handleFavourite = (coffee) => {
     addFavourite(coffee);
-    getFavourite(coffee);
+    setIsFAvourite(true);
   };
 
   return (
@@ -37,6 +44,7 @@ const CoffeeDetails = () => {
         </div>
         <div>
           <button
+            disabled={isFavourit}
             onClick={() => handleFavourite(coffee)}
             className="btn btn-warning font-bold"
           >
